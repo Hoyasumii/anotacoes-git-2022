@@ -1,0 +1,45 @@
+git: Comando essencial para toda e qualquer interação com o sistema de versionamento.
+
+Configuração inicial: git config user.name="Nome do Usuário"
+				git config user.email="email@usuario.com"
+
+.gitignore: Arquivo utilizado para determinar as pastas e arquivos que não serão monitoradas pelo git. Você pode colocar o nome de arquivos, de pastas, ou também, de extensões, e muito mais.
+	*.extensão: Ele não listará esse tipo de arquivo
+	**Pasta: Ele não listará essa pasta, nem em nenhuma ocorrência dela por meio dos arquivos
+
+todos os comandos funcionam da seguinte forma:
+	git <comando> **args
+
+Complementos:
+
+init: Serve para inicializar o git na pasta atual
+
+help: Para pedir ajuda em um certo comando, ou no próprio git
+	-h: Colocado após o comando desejado.
+
+status: Serve para verificar o status em que se encontra o git. Se ele identificou ou não mudanças no ambiente.
+
+add <arquivo>: Adicionar um arquivo para o pré-monitoramento do git
+	add <.>: Adicionar todos os arquivos possíveis para o pré-monitoramento do git
+
+commit: Selecionar todos os arquivos que estão no pré-monitoramento do git e todos que já estavam no monitoramento para criar um ponto de versão. Ou seja, um ponto em que caso o desenvolvedor precise, ele pode voltar. Serve principalmente para criar backups do código.
+	commit -m <texto>: Para determinar o texto que resumirá o commit. ex.: Alterações sutis em config.json
+	commit --amend: Serve para "commitar" por cima do commit antigo.
+
+log: Serve para Verificar os pontos de backup, ou, os commits realizados.
+	log --oneline: Para a verificação simples de todos os commits feitos
+
+checkout : Comando utilizado para fazer com que um objeto retorne a um ponto específico.
+	checkout <hash id>: Serve para fazer com que o Git retorne a pontos de backup. Sobre o hash id: É obtido após o log, onde é informado o código de 7 dígitos de cada commit realizado. Também aparece após a realização de um commit.
+	checkout <arquivo>: Serve para fazer com que um arquivo retorne a algum estado anterior. Faz com que o arquivo retorne ao estado em que se encontrava no commit anterior. Caso o arquivo não exista mais, usar o checkout fará com que ele exista novamente (desde que não tenha sido feito nenhum commit desde o arquivo ter sido removido)
+
+git restore --staged <file>: Serve para o Git restaurar arquivos que foram apagados (desde que não tenha sido feito nenhum commit desde o arquivo ter sido removido)
+
+git rm <file>: Serve para o Git remover arquivos e listar do melhor modo, caso hajam necessidades de restauração
+
+git mv <old_file> <new_file>: Serve para o Git renomear ou mudar o diretório de um arquivo.
+
+git reset <path> <mode>:
+	<path> pode ser um hash id. Ou seja, pode descartar commits.
+	<path> == HEAD^: Commit posterior ao mais recente.
+	git reset HEAD --hard: Serve para a pasta retornar todas as suas alterações até o último ponto de controle.
